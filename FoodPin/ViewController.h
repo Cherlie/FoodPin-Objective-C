@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreData/CoreData.h>
 
-@interface ViewController : UIViewController
+@interface ViewController : UITableViewController<NSFetchedResultsControllerDelegate,UISearchResultsUpdating>
 
+@property (strong,nonatomic)NSFetchedResultsController* fetchResultController;
+@property (strong,nonatomic)UISearchController* searchController;
 
 @end
 
