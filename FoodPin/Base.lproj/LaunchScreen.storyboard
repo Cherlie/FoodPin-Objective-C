@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="3gS-PV-BMo">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="m3c-4b-WMu">
+            <objects>
+                <viewController id="3gS-PV-BMo" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="eiJ-ru-GZB"/>
+                        <viewControllerLayoutGuide type="bottom" id="9G3-zk-bfI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8Dy-aK-Cf9">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchscreen" translatesAutoresizingMaskIntoConstraints="NO" id="CKE-6M-RqU">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="CKE-6M-RqU" firstAttribute="centerY" secondItem="8Dy-aK-Cf9" secondAttribute="centerY" id="JDy-Pr-EfE"/>
+                            <constraint firstItem="9G3-zk-bfI" firstAttribute="top" secondItem="CKE-6M-RqU" secondAttribute="bottom" id="TKt-hf-aJi"/>
+                            <constraint firstItem="CKE-6M-RqU" firstAttribute="leading" secondItem="8Dy-aK-Cf9" secondAttribute="leadingMargin" constant="-20" id="UP2-AP-era"/>
+                            <constraint firstItem="CKE-6M-RqU" firstAttribute="top" secondItem="8Dy-aK-Cf9" secondAttribute="topMargin" id="dLO-Cc-Lil"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="CKE-6M-RqU" secondAttribute="trailing" constant="-20" id="gHR-ee-DA1"/>
+                            <constraint firstItem="CKE-6M-RqU" firstAttribute="centerX" secondItem="8Dy-aK-Cf9" secondAttribute="centerX" id="slS-Hz-doA"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="G4y-xt-UJQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="288" y="218"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="launchscreen" width="640" height="1136"/>
+    </resources>
+</document>

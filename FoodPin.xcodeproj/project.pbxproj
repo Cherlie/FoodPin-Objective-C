@@ -26,6 +26,7 @@
 		9976E40E1B9C977B00013022 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9976E40D1B9C977B00013022 /* DetailViewController.m */; };
 		9976E4121B9C9FD300013022 /* DetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9976E4101B9C9FD300013022 /* DetailTableViewCell.m */; };
 		9976E4131B9C9FD300013022 /* DetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9976E4111B9C9FD300013022 /* DetailTableViewCell.xib */; };
+		998AB4E11BAC6B3700685166 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 998AB4E31BAC6B3700685166 /* LaunchScreen.storyboard */; };
 		998D3A351BA1B6C60080E988 /* ReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 998D3A341BA1B6C60080E988 /* ReviewViewController.m */; };
 		99F17B571BA41EA200DC2102 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99F17B561BA41EA200DC2102 /* MapKit.framework */; };
 		99F17B5A1BA429A100DC2102 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99F17B591BA429A100DC2102 /* MapViewController.m */; };
@@ -79,6 +80,7 @@
 		9976E40F1B9C9FD300013022 /* DetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailTableViewCell.h; sourceTree = "<group>"; };
 		9976E4101B9C9FD300013022 /* DetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailTableViewCell.m; sourceTree = "<group>"; };
 		9976E4111B9C9FD300013022 /* DetailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailTableViewCell.xib; sourceTree = "<group>"; };
+		998AB4E21BAC6B3700685166 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		998D3A331BA1B6C60080E988 /* ReviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewViewController.h; sourceTree = "<group>"; };
 		998D3A341BA1B6C60080E988 /* ReviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewViewController.m; sourceTree = "<group>"; };
 		99F17B561BA41EA200DC2102 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -167,6 +169,7 @@
 				99700F3D1BA57A440021E414 /* FeedViewController.m */,
 				99700F3F1BA598A40021E414 /* WebViewController.h */,
 				99700F401BA598A40021E414 /* WebViewController.m */,
+				998AB4E31BAC6B3700685166 /* LaunchScreen.storyboard */,
 			);
 			path = FoodPin;
 			sourceTree = "<group>";
@@ -241,11 +244,12 @@
 		996CCCEE1B99C0480058BABC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0640;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "梅须白";
 				TargetAttributes = {
 					996CCCF51B99C0480058BABC = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = YTTFS8XE7Z;
 						SystemCapabilities = {
 							com.apple.Maps.iOS = {
 								enabled = 1;
@@ -285,6 +289,7 @@
 				996CCD261B99D73F0058BABC /* CustomTableViewCell.xib in Resources */,
 				9976E4131B9C9FD300013022 /* DetailTableViewCell.xib in Resources */,
 				996CCD071B99C0480058BABC /* Images.xcassets in Resources */,
+				998AB4E11BAC6B3700685166 /* LaunchScreen.storyboard in Resources */,
 				99F9A8C81BA458E30024B029 /* AddTableViewController.xib in Resources */,
 				99700F381BA561260021E414 /* PageContentViewController.xib in Resources */,
 			);
@@ -342,6 +347,17 @@
 		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		998AB4E31BAC6B3700685166 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				998AB4E21BAC6B3700685166 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		996CCD171B99C0480058BABC /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -364,6 +380,8 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -408,6 +426,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -427,10 +446,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = FoodPin/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "uappx.cn.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -438,10 +461,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = FoodPin/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "uappx.cn.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -449,16 +476,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = FoodPinTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "uappx.cn.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FoodPin.app/FoodPin";
 			};
@@ -468,12 +493,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = FoodPinTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "uappx.cn.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FoodPin.app/FoodPin";
 			};

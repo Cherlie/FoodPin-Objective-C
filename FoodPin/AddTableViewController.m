@@ -159,13 +159,13 @@
 }
 
 - (IBAction)yesButtonClick:(id)sender{
-    self.noButton.backgroundColor = [UIColor grayColor];
+    self.noButton.backgroundColor = [UIColor lightGrayColor];
     self.yesButton.backgroundColor = [UIColor redColor];
 }
 
 - (IBAction)noButtonClick:(id)sender{
     self.noButton.backgroundColor = [UIColor redColor];
-    self.yesButton.backgroundColor = [UIColor grayColor];
+    self.yesButton.backgroundColor = [UIColor lightGrayColor];
 }
 
 /*

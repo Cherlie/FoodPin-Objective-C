@@ -2,18 +2,16 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x",
-      "filename" : "royaloak.jpg"
+      "filename" : "launchscreen.png",
+      "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "scale" : "2x",
-      "filename" : "royaloak@2x.jpg"
+      "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "scale" : "3x",
-      "filename" : "royaloak@3x.jpg"
+      "scale" : "3x"
     }
   ],
   "info" : {

@@ -66,7 +66,7 @@
         NSDictionary* dict = [restaurants objectAtIndex:indexPath.row];
         cell.nameLabel.text = dict[@"Name"];
         cell.typeLabel.text = dict[@"Type"];
-        cell.thumbnailImageView.image = [UIImage imageNamed:@"default"];
+        cell.thumbnailImageView.image = [UIImage imageNamed:@"camera"];
         cell.locationLabel.text = dict[@"Location"];
         
         //loading image from url async

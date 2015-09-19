@@ -21,6 +21,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    NSLog(@"Height=%f,Width=%f",[UIScreen mainScreen].bounds.size.height,[UIScreen mainScreen].bounds.size.width);
     //init all view controls
     ViewController* viewController = [[ViewController alloc]init];
     FeedViewController* feedViewController = [[FeedViewController alloc]init];
