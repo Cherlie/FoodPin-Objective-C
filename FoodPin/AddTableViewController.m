@@ -100,30 +100,41 @@
 }
 
 //fix status bar changed to black bug
+/*
 - (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated{
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
+}
+ */
+
+- (UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
 }
 
 - (void)cannelButtonClick{
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (void)showAlertViewTitle:(NSString*)title message:(NSString*)message{
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
 - (void)saveButtonClick{
     if (self.nameTextField.text.length == 0) {
-        UIAlertView* alert = [[UIAlertView alloc]initWithTitle:@"Oops" message:@"We can't proceed as you forget to fill in the resturant name.All fields are mandatory" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        [alert show];
+        [self showAlertViewTitle:@"Oops" message:@"We can't proceed as you forget to fill in the resturant name.All fields are mandatory"];
         return;
     }
     
     if (self.typeTextField.text.length == 0) {
-        UIAlertView* alert = [[UIAlertView alloc]initWithTitle:@"Oops" message:@"We can't proceed as you forget to fill in the resturant type.All fields are mandatory" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        [alert show];
+        [self showAlertViewTitle:@"Oops" message:@"We can't proceed as you forget to fill in the resturant type.All fields are mandatory"];
+
         return;
     }
     
     if (self.locationTextField.text.length == 0) {
-        UIAlertView* alert = [[UIAlertView alloc]initWithTitle:@"Oops" message:@"We can't proceed as you forget to fill in the resturant location.All fields are mandatory" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        [alert show];
+        [self showAlertViewTitle:@"Oops" message:@"We can't proceed as you forget to fill in the resturant location.All fields are mandatory"];
+        
         return;
     }
     

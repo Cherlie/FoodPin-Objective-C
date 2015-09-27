@@ -59,8 +59,9 @@
         composer.mailComposeDelegate = self;
         [composer setToRecipients:@[@"cherlies_wang@outlook.com"]];
         composer.navigationBar.tintColor = [UIColor whiteColor];
+
         [self presentViewController:composer animated:YES completion:^{
-            [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
+            [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
         }];
     }
 }

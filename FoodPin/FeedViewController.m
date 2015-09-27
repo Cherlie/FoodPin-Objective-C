@@ -33,6 +33,7 @@
     thumbQueue = [[NSOperationQueue alloc]init];
     imageCache = [[NSCache alloc]init];
     //indicator
+    self.spinner = [[UIActivityIndicatorView alloc]initWithFrame:CGRectZero];
     self.spinner.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
     self.spinner.center = self.view.center;
     self.spinner.hidesWhenStopped = YES;
@@ -71,25 +72,34 @@
         
         //loading image from url async
         NSURL* url = [[NSURL alloc]initWithString:dict[@"Image"]];
-        NSData* data = [imageCache objectForKey:dict[@"Id"]];
-        if (data != nil) {
-            cell.thumbnailImageView.image = [UIImage imageWithData:data];
+        NSURL* cacheURL = [imageCache objectForKey:dict[@"Id"]];
+        if (cacheURL != nil) {
+            cell.thumbnailImageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:cacheURL]];
         }else{
             NSURLRequest* request = [[NSURLRequest alloc]initWithURL:url];
-            
             //send request async
-            [NSURLConnection sendAsynchronousRequest:request queue:thumbQueue completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-                if(connectionError != nil){
-                    NSLog(@"%@",connectionError);
+            
+            NSURLSession *session = [NSURLSession sharedSession];
+            NSURLSessionTask* downloadTask = [session downloadTaskWithRequest:request completionHandler:^(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+                if(error != nil){
+                    NSLog(@"%@",error);
                 }else{
-                    UIImage* image = [[UIImage alloc]initWithData:data];
+                    //move tmp file to document path
+                    NSString* documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)firstObject];
+                    NSURL* documentsDirectoryURL = [NSURL fileURLWithPath:documentsPath];
+                    NSURL* newFileLocation = [documentsDirectoryURL URLByAppendingPathComponent:[[response URL]lastPathComponent]];
+                    [[NSFileManager defaultManager]copyItemAtURL:location toURL:newFileLocation error:nil];
+                    
+                    NSData* data = [NSData dataWithContentsOfURL:location];
+                    UIImage* image = [UIImage imageWithData:data];
                     //update ui
                     dispatch_async(dispatch_get_main_queue(), ^{
                         cell.thumbnailImageView.image = image;
-                        [imageCache setObject:data forKey:dict[@"Id"]];
+                        [imageCache setObject:newFileLocation forKey:dict[@"Id"]];
                     });
                 }
             }];
+            [downloadTask resume];
         }
         //if the restaurant is visited,it will show a mark on row.
         if([[dict objectForKey:@"IsVisited"]intValue] == 1){
@@ -107,12 +117,13 @@
     //define a request
     NSURL* nsUrl = [[NSURL alloc] initWithString:APIURL];
     NSURLRequest* request = [[NSURLRequest alloc]initWithURL:nsUrl];
-    NSOperationQueue* queue = [[NSOperationQueue alloc]init];
+    //NSOperationQueue* queue = [[NSOperationQueue alloc]init];
     //get data from webapi async
-    [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-        if(connectionError != nil){
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURLSessionTask* dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if(error != nil){
             //deal with http error
-            NSLog(@"%@",connectionError);
+            NSLog(@"%@",error);
             dispatch_async(dispatch_get_main_queue(), ^{
                 // error handle
             });
@@ -121,13 +132,19 @@
             NSArray* json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
             //run main queue to update ui
             dispatch_async(dispatch_get_main_queue(), ^{
-                restaurants = json;
-                [self.tableView reloadData];
-                [self.spinner stopAnimating];
-                [self.refreshControl endRefreshing];
+                if ([json isKindOfClass:[NSArray class]]) {
+                    restaurants = json;
+                    [self.tableView reloadData];
+                    [self.spinner stopAnimating];
+                    [self.refreshControl endRefreshing];
+                }
             });
         }
     }];
+    [dataTask resume];
+    //[NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+ 
+    //}];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
